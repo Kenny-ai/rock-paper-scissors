@@ -10,7 +10,7 @@ const styles = {
 };
 
 
-const Rules: React.FC = () => {
+const MobileRules: React.FC = () => {
   const { setShowRules } = useContext(StateContext) as ContextInterface;
   
   return (
@@ -36,4 +36,4 @@ const Rules: React.FC = () => {
   );
 };
 
-export default Rules;
+export default MobileRules;

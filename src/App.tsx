@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useState } from "react";
+import { useState } from "react";
 import Header from "./components/Header";
 import Body from "./components/Body";
 import Game from "./components/Game";
@@ -15,26 +15,26 @@ export const elementsArray: Element[] = [
   {
     id: 1,
     icon: <Rock />,
-    isClicked: false,
   },
+
   {
     id: 2,
     icon: <Paper />,
-    isClicked: false,
   },
+
   {
     id: 3,
     icon: <Scissors />,
-    isClicked: false,
   },
 ];
 function App() {
   const [showRules, setShowRules] = useState(false);
 
-  // console.log(elementsArray);
   const [elements, setElements] = useState<Element[]>(elementsArray);
 
   const [showGame, setShowGame] = useState(false);
+
+  const [scores, setScores] = useState({userScore: 0, cpuScore: 0})
 
   const values = {
     showRules,
@@ -43,23 +43,25 @@ function App() {
     setElements,
     showGame,
     setShowGame,
+    scores,
+    setScores,
   };
 
   return (
     <StateContext.Provider value={values}>
-      <div className="app h-screen text-white">
-        {!showRules && (
-          <div className="">
+      <div className="app h-screen text-white relative">
+        { (
+          <div className="flex flex-col h-full justify-between">
             <Header />
             {!showGame && <Body />}
             {showGame && <Game />}
-            {/* {elements[0].icon} */}
+
             <Button />
           </div>
         )}
 
         {showRules && (
-          <div className="rules">
+          <div className="rules absolute top-0 w-full">
             <Rules />
           </div>
         )}

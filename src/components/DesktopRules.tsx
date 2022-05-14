@@ -12,20 +12,24 @@ const styles = {
   rulesText: "uppercase text-sky-900 text-3xl",
 };
 
-const DesktopRules: React.FC = () => {
+const DesktopRules = () => {
   const { setShowRules } = useContext(StateContext) as ContextInterface;
 
-
   return (
-    <div className="desktop-rules">
-      <div className={styles.container}>
-        <div className={styles.rulesContainer}>
+    <div className="desktop-rules relative">
+      <div className={styles.container}></div>
+      <div className="h-full absolute top-0 flex justify-center items-center w-full">
+        <div className="bg-white p-6 rounded-lg w-fit">
           <div className={styles.rulesHeader}>
-
             <h1 className={styles.rulesText}>Rules</h1>
 
-            <div className="close-icon" onClick={() => {setShowRules(false)}}>
-              <IconClose className="cursor-pointer" />
+            <div
+              className="close-icon cursor-pointer"
+              onClick={() => {
+                setShowRules(false);
+              }}
+            >
+              <IconClose />
             </div>
           </div>
 

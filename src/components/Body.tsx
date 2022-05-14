@@ -8,22 +8,22 @@ import Scissors from "./elements/Scissors";
 import Rock from "./elements/Rock";
 import { elementsArray } from "../App";
 
-const styles = {
-  buttonStyles:
-    "uppercase border-2 border-gray-300 rounded-lg px-7 py-1 cursor-pointer",
-};
-
-enum Id {ROCK = 1, PAPER, SCISSORS}
+enum Id {
+  ROCK = 1,
+  PAPER,
+  SCISSORS,
+}
 
 const Body = () => {
-  const { elements, setElements, setShowGame } = useContext(
+
+  const { setElements, setShowGame } = useContext(
     StateContext
   ) as ContextInterface;
 
   return (
     <div className="body">
       <div className="flex justify-center items-center py-12 w-full md:mb-4">
-        <div className="relative flex justify-center items-center p-12">
+        <div className="relative flex justify-center items-center p-8 sm:p-12">
           <Triangle />
 
           <div
@@ -32,7 +32,6 @@ const Body = () => {
               setElements(
                 elementsArray.filter((element) => element.id === Id.PAPER)
               );
-              console.log(elements);
               setShowGame(true);
             }}
           >
@@ -45,24 +44,23 @@ const Body = () => {
               setElements(
                 elementsArray.filter((element) => element.id === Id.SCISSORS)
               );
-              console.log(elements);
               setShowGame(true);
             }}
           >
             <Scissors />
           </div>
 
-          <div
-            className="w-full flex justify-center absolute bottom-0"
-            onClick={() => {
-              setElements(
-                elementsArray.filter((element) => element.id === Id.ROCK)
-              );
-              console.log(elements);
-              setShowGame(true);
-            }}
-          >
-            <Rock />
+          <div className="w-full flex justify-center absolute bottom-0">
+            <div
+              onClick={() => {
+                setElements(
+                  elementsArray.filter((element) => element.id === Id.ROCK)
+                );
+                setShowGame(true);
+              }}
+            >
+              <Rock />
+            </div>
           </div>
         </div>
       </div>

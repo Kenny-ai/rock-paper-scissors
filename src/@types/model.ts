@@ -7,10 +7,16 @@ export interface ContextInterface {
   setElements: React.Dispatch<React.SetStateAction<Element[]>>;
   showGame: boolean;
   setShowGame: React.Dispatch<React.SetStateAction<boolean>>;
+  scores: Scores;
+  setScores: React.Dispatch<React.SetStateAction<Scores>>;
 }
 
 export interface Element {
   id: number;
   icon: React.ReactNode;
-  isClicked: boolean;
+}
+
+export interface Scores {
+  userScore: number;
+  cpuScore: number;
 }
