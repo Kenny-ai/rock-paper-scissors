@@ -33,7 +33,7 @@ const DesktopRules = () => {
             </div>
           </div>
 
-          <div className="">
+          <div>
             <RulesSvg />
           </div>
         </div>

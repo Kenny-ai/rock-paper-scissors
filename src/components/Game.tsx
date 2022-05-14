@@ -74,7 +74,7 @@ const Game = () => {
         </div>
 
         {
-          <div className="desktop-win-message flex flex-col justify-center items-center p-4 hidden lg:flex">
+          <div className="desktop-win-message flex-col justify-center items-center p-4 hidden lg:flex">
             <h1 className="uppercase text-6xl mb-4 lg:text-4xl xl:text-6xl">
               {result === "win"
                 ? "You win!"
