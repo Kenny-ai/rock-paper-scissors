@@ -6,16 +6,15 @@ import { ContextInterface } from "../@types/model";
 import { useContext } from "react";
 
 const styles = {
-  iconStyles: "close-icon flex justify-center items-center h-1/4 cursor-pointer",
+  iconStyles:
+    "close-icon flex justify-center items-center h-1/4 cursor-pointer",
 };
-
 
 const MobileRules: React.FC = () => {
   const { setShowRules } = useContext(StateContext) as ContextInterface;
-  
+
   return (
     <div className="rules">
-
       <div className="bg-white h-screen">
         <div className="rules-header flex justify-center items-center h-1/4">
           <h1 className="uppercase text-sky-900 text-3xl">Rules</h1>
@@ -27,7 +26,9 @@ const MobileRules: React.FC = () => {
 
         <div
           className={styles.iconStyles}
-          onClick={() => { setShowRules(false) }}
+          onClick={() => {
+            setShowRules(false);
+          }}
         >
           <IconClose />
         </div>
