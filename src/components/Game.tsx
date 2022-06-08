@@ -1,17 +1,14 @@
-import React, { useContext, useEffect, useState } from "react";
-import { ContextInterface } from "../@types/model";
-import { StateContext } from "../Context/StateProvider";
+import React, { useEffect, useState } from "react";
+import { useStateContext } from "../Context/StateProvider";
 import { elementsArray } from "../App";
 
 const Game = () => {
-  const { elements, setShowGame, scores, setScores } = useContext(
-    StateContext
-  ) as ContextInterface;
+  const { elements, setShowGame, scores, setScores } = useStateContext();
 
   // set user's pick and computer's pick variables
   const yourPick = elements[0].icon;
 
-// eslint-disable-next-line
+  // eslint-disable-next-line
   const [randomIcon, setRandomIcon] = useState<React.ReactNode>(
     elementsArray[Math.floor(Math.random() * 3)].icon
   );

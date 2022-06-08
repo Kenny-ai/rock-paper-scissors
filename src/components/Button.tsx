@@ -1,6 +1,4 @@
-import { useContext } from "react";
-import { ContextInterface } from "../@types/model";
-import { StateContext } from "../Context/StateProvider";
+import { useStateContext } from "../Context/StateProvider";
 
 const styles = {
   buttonStyles:
@@ -9,7 +7,7 @@ const styles = {
 
 const Button = () => {
 
-  const { setShowRules } = useContext(StateContext) as ContextInterface;
+  const { setShowRules } = useStateContext();
   return (
     <div className="py-5 lg:py-3">
       <div className="button flex justify-center lg:justify-end md:px-12">

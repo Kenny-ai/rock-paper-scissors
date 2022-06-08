@@ -1,9 +1,6 @@
 import { ReactComponent as RulesSvg } from "../svg/image-rules.svg";
 import { ReactComponent as IconClose } from "../svg/icon-close.svg";
-import { StateContext } from "../Context/StateProvider";
-import { ContextInterface } from "../@types/model";
-
-import { useContext } from "react";
+import { useStateContext } from "../Context/StateProvider";
 
 const styles = {
   container: "bg-black opacity-50 h-screen flex justify-center items-center",
@@ -13,7 +10,7 @@ const styles = {
 };
 
 const DesktopRules = () => {
-  const { setShowRules } = useContext(StateContext) as ContextInterface;
+  const { setShowRules } = useStateContext();
 
   return (
     <div className="desktop-rules relative">

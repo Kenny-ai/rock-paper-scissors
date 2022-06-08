@@ -1,9 +1,6 @@
 import { ReactComponent as RulesSvg } from "../svg/image-rules.svg";
 import { ReactComponent as IconClose } from "../svg/icon-close.svg";
-import { StateContext } from "../Context/StateProvider";
-import { ContextInterface } from "../@types/model";
-
-import { useContext } from "react";
+import { useStateContext } from "../Context/StateProvider";
 
 const styles = {
   iconStyles:
@@ -11,7 +8,7 @@ const styles = {
 };
 
 const MobileRules: React.FC = () => {
-  const { setShowRules } = useContext(StateContext) as ContextInterface;
+  const { setShowRules } = useStateContext();
 
   return (
     <div className="rules">

@@ -1,8 +1,6 @@
-import { useContext } from "react";
 import { ReactComponent as Triangle } from "../svg/bg-triangle.svg";
 import "../styles/Body.css";
-import { StateContext } from "../Context/StateProvider";
-import { ContextInterface } from "../@types/model";
+import { useStateContext } from "../Context/StateProvider";
 import Paper from "./elements/Paper";
 import Scissors from "./elements/Scissors";
 import Rock from "./elements/Rock";
@@ -15,10 +13,7 @@ enum Id {
 }
 
 const Body = () => {
-
-  const { setElements, setShowGame } = useContext(
-    StateContext
-  ) as ContextInterface;
+  const { setElements, setShowGame } = useStateContext();
 
   return (
     <div className="body">
