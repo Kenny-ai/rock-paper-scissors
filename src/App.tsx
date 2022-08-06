@@ -13,16 +13,19 @@ import { useStateContext } from "./Context/StateProvider";
 export const elementsArray: Element[] = [
   {
     id: 1,
+    name: "Rock",
     icon: <Rock />,
   },
 
   {
     id: 2,
+    name: "Paper",
     icon: <Paper />,
   },
 
   {
     id: 3,
+    name: "Scissors",
     icon: <Scissors />,
   },
 ];

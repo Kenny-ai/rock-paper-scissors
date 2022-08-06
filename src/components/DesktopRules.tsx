@@ -1,40 +1,49 @@
 import { ReactComponent as RulesSvg } from "../svg/image-rules.svg";
 import { ReactComponent as IconClose } from "../svg/icon-close.svg";
 import { useStateContext } from "../Context/StateProvider";
-
-const styles = {
-  container: "bg-black opacity-50 h-screen flex justify-center items-center",
-  rulesContainer: "rules-container bg-white p-6 rounded-lg",
-  rulesHeader: "flex justify-between items-center mb-8",
-  rulesText: "uppercase text-sky-900 text-3xl",
-};
+import { AnimatePresence, motion } from "framer-motion";
+import "../styles/Body.css";
 
 const DesktopRules = () => {
   const { setShowRules } = useStateContext();
 
+  const handleCloseRules = () => {
+    setShowRules(false);
+  };
+
   return (
     <div className="desktop-rules relative">
-      <div className={styles.container}></div>
-      <div className="h-full absolute top-0 flex justify-center items-center w-full">
-        <div className="bg-white p-6 rounded-lg w-fit">
-          <div className={styles.rulesHeader}>
-            <h1 className={styles.rulesText}>Rules</h1>
+      <div
+        onClick={handleCloseRules}
+        className="bg-black opacity-50 h-screen flex justify-center items-center"
+      ></div>
 
-            <div
-              className="close-icon cursor-pointer"
-              onClick={() => {
-                setShowRules(false);
-              }}
-            >
-              <IconClose />
+      <AnimatePresence>
+        <motion.div
+          className="bg-white rounded-lg p-6 w-[360px] absolute flex flex-col justify-center rule"
+          initial={{ opacity: 0, y: 200 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 200 }}
+        >
+          <>
+            <div className="flex justify-between items-center mb-8">
+              <h1 className="uppercase text-sky-900 text-3xl">Rules</h1>
+
+              <motion.div
+                className="close-icon cursor-pointer"
+                whileHover={{ scale: 1.2 }}
+                onClick={handleCloseRules}
+              >
+                <IconClose />
+              </motion.div>
             </div>
-          </div>
 
-          <div>
-            <RulesSvg />
-          </div>
-        </div>
-      </div>
+            <div className="flex justify-center items-center">
+              <RulesSvg />
+            </div>
+          </>
+        </motion.div>
+      </AnimatePresence>
     </div>
   );
 };

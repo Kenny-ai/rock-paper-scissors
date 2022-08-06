@@ -13,6 +13,7 @@ export interface ContextInterface {
 
 export interface Element {
   id: number;
+  name: "Rock" | "Paper" | "Scissors";
   icon: React.ReactNode;
 }
 

@@ -1,7 +1,6 @@
-import React from 'react'
-import DesktopRules from './DesktopRules'
+import React from "react";
+import DesktopRules from "./DesktopRules";
 import MobileRules from "./MobileRules";
-
 
 const Rules: React.FC = () => {
   return (
@@ -16,4 +15,4 @@ const Rules: React.FC = () => {
   );
 };
 
-export default Rules
+export default Rules;

@@ -5,6 +5,7 @@ import Paper from "./elements/Paper";
 import Scissors from "./elements/Scissors";
 import Rock from "./elements/Rock";
 import { elementsArray } from "../App";
+import { motion } from "framer-motion";
 
 enum Id {
   ROCK = 1,
@@ -18,7 +19,21 @@ const Body = () => {
   return (
     <div className="body">
       <div className="flex justify-center items-center py-12 w-full md:mb-4">
-        <div className="relative flex justify-center items-center p-8 sm:p-12">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.4 }}
+          animate={{
+            opacity: 1,
+            scale: 1,
+          }}
+          transition={{
+            duration: 0.5,
+            type: "spring",
+            damping: 6,
+            stiffness: 100,
+            restDelta: 0.001,
+          }}
+          className="relative flex justify-center items-center p-8 sm:p-12"
+        >
           <Triangle />
 
           <div
@@ -57,7 +72,7 @@ const Body = () => {
               <Rock />
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
 
       {/* <div className="button flex justify-center lg:justify-end md:px-12">
