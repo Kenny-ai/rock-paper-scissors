@@ -7,7 +7,7 @@ const Header = () => {
   const handleReset = () => {
     setShowGame(false);
     setScores({ userScore: 0, cpuScore: 0 });
-  }
+  };
 
   return (
     <div className="flex justify-center items-center pt-8 mb-8 md:mb-12">
@@ -23,7 +23,10 @@ const Header = () => {
             <p className="text-blue-500 text-xs uppercase sm:text-base">
               Your score
             </p>
-            <p className="text-gray-500 text-4xl lg:text-6xl">
+            <p
+              data-testid="user-score"
+              className="text-gray-500 text-4xl lg:text-6xl"
+            >
               {scores.userScore}
             </p>
           </div>
@@ -43,7 +46,10 @@ const Header = () => {
             <p className="text-blue-500 text-xs uppercase sm:text-base">
               cpu score
             </p>
-            <p className="text-gray-500 text-4xl lg:text-6xl">
+            <p
+              data-testid="cpu-score"
+              className="text-gray-500 text-4xl lg:text-6xl"
+            >
               {scores.cpuScore}
             </p>
           </div>

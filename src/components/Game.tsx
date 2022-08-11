@@ -4,6 +4,23 @@ import { elementsArray } from "../App";
 import { motion } from "framer-motion";
 import "../styles/Body.css";
 
+// checkWin takes both ids and returns the id of the winner
+export const checkWin = (array: number[]) => {
+  let arr = array.sort();
+  if (arr[0] === arr[1]) {
+    return 0;
+  }
+  if (arr[1] > arr[0] + 1) {
+    return arr[0];
+  }
+  return arr[1];
+};
+
+export let computerPickTest: React.ReactNode;
+
+// export const computerPick: React.ReactNode =
+//   elementsArray[Math.floor(Math.random() * 3)].icon;
+
 const Game = () => {
   const { elements, setShowGame, scores, setScores } = useStateContext();
 
@@ -35,13 +52,32 @@ const Game = () => {
     );
   };
 
+  const BeatsMessage = () => {
+    return (
+      <motion.p
+        className="mb-4 uppercase"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: [0, 0, 0, 0, 1] }}
+        transition={{
+          duration: 1.5,
+          ease: "easeIn",
+          times: [0, 0.2, 0.5, 0.8, 1],
+        }}
+      >
+        {winnerName} beats {loserName}!
+      </motion.p>
+    );
+  };
+
   // set user's pick and computer's pick variables
   const userPick = elements[0].icon;
 
   // eslint-disable-next-line
-  const [randomIcon, setRandomIcon] = useState<React.ReactNode>(
+  const [computerPick, setComputerPick] = useState<React.ReactNode>(
     elementsArray[Math.floor(Math.random() * 3)].icon
   );
+
+  computerPickTest = computerPick;
 
   // get id of element picked
   const getId = (icon: ReactNode) => {
@@ -49,28 +85,16 @@ const Game = () => {
   };
 
   const userPickId = getId(userPick);
-  const randomIconId = getId(randomIcon);
-
-  // checkWin takes both ids and returns the id of the winner
-  const checkWin = (array: number[]) => {
-    let arr = array.sort();
-    if (arr[0] === arr[1]) {
-      return 0;
-    }
-    if (arr[1] > arr[0] + 1) {
-      return arr[0];
-    }
-    return arr[1];
-  };
+  const computerPickId = getId(computerPick);
 
   // assign winner id to winnerId variable
-  const winnerId = checkWin([userPickId, randomIconId]);
+  const winnerId = checkWin([userPickId, computerPickId]);
 
   // get loserId
   const loserId =
     winnerId === 0
       ? 0
-      : [userPickId, randomIconId].filter((id) => id !== winnerId)[0];
+      : [userPickId, computerPickId].filter((id) => id !== winnerId)[0];
 
   // check winner by comparing winnerId to userPickId
   const result =
@@ -111,6 +135,7 @@ const Game = () => {
             className={`mb-10 md:mt-10 rounded-full ${
               userPickId === winnerId ? ` winner` : ``
             } `}
+            data-testid="user-pick"
             initial={{ opacity: 0 }}
             animate={{
               opacity: [0, 1, 1, 1, 1],
@@ -139,20 +164,7 @@ const Game = () => {
           >
             {result}
           </motion.p>
-          {loserId !== 0 && (
-            <motion.p
-              className="mb-4 uppercase"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: [0, 0, 0, 0, 1] }}
-              transition={{
-                duration: 1.5,
-                ease: "easeIn",
-                times: [0, 0.2, 0.5, 0.8, 1],
-              }}
-            >
-              {winnerName} beats {loserName}
-            </motion.p>
-          )}
+          {loserId !== 0 && <BeatsMessage />}
           {<PlayAgainButton />}
         </div>
 
@@ -160,8 +172,9 @@ const Game = () => {
           <p className="hidden md:block md:text-xl">The House Picked</p>
           <motion.div
             className={`mb-10 md:mt-10 rounded-full ${
-              randomIconId === winnerId ? `winner` : ``
+              computerPickId === winnerId ? `winner` : ``
             } `}
+            data-testid="computer-pick"
             initial={{ opacity: 0 }}
             animate={{
               opacity: [0, 0, 0, 1, 1],
@@ -172,7 +185,7 @@ const Game = () => {
               },
             }}
           >
-            {randomIcon}
+            {computerPick}
           </motion.div>
 
           <p className="md:hidden md:text-xl">The House Picked</p>
@@ -181,7 +194,19 @@ const Game = () => {
 
       {
         <div className="mobile-win-message flex flex-col items-center pb-10 lg:hidden">
-          <p className="uppercase text-4xl mb-4">{result}</p>
+          {loserId !== 0 && <BeatsMessage />}
+          <motion.p
+            className="uppercase text-4xl mb-4"
+            initial={{ opacity: 0, y: "-100%" }}
+            animate={{ opacity: [0, 0, 0, 0, 1], y: 0 }}
+            transition={{
+              duration: 1.5,
+              ease: "easeIn",
+              times: [0, 0.2, 0.5, 0.8, 1],
+            }}
+          >
+            {result}
+          </motion.p>
           <PlayAgainButton />
         </div>
       }

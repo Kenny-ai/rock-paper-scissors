@@ -3,7 +3,7 @@ import React, { useContext, useState } from "react";
 import { ContextInterface, Element } from "../@types/model";
 import { elementsArray } from "../App";
 
-export const StateContext = React.createContext<ContextInterface | null>(null);
+const StateContext = React.createContext<ContextInterface | null>(null);
 
 interface Props {
   children: React.ReactNode;

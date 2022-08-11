@@ -13,19 +13,19 @@ import { useStateContext } from "./Context/StateProvider";
 export const elementsArray: Element[] = [
   {
     id: 1,
-    name: "Rock",
+    name: "rock",
     icon: <Rock />,
   },
 
   {
     id: 2,
-    name: "Paper",
+    name: "paper",
     icon: <Paper />,
   },
 
   {
     id: 3,
-    name: "Scissors",
+    name: "scissors",
     icon: <Scissors />,
   },
 ];
@@ -34,7 +34,7 @@ function App() {
   const { showGame, showRules } = useStateContext();
 
   return (
-    <div className="app h-screen text-white relative">
+    <div className="app h-fit text-white relative">
       <div className="flex flex-col h-full justify-between">
         <Header />
 
@@ -45,7 +45,7 @@ function App() {
       </div>
 
       {showRules && (
-        <div className="rules absolute top-0 w-full">
+        <div className="rules absolute top-0 w-full h-full">
           <Rules />
         </div>
       )}

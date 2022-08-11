@@ -1,6 +1,7 @@
 import { ReactComponent as RulesSvg } from "../svg/image-rules.svg";
 import { ReactComponent as IconClose } from "../svg/icon-close.svg";
 import { useStateContext } from "../Context/StateProvider";
+import { motion } from "framer-motion";
 
 const styles = {
   iconStyles:
@@ -11,7 +12,7 @@ const MobileRules: React.FC = () => {
   const { setShowRules } = useStateContext();
 
   return (
-    <div className="rules">
+    <motion.div className="rules" data-testid="mobile-rules">
       <div className="bg-white h-screen">
         <div className="rules-header flex justify-center items-center h-1/4">
           <h1 className="uppercase text-sky-900 text-3xl">Rules</h1>
@@ -30,7 +31,7 @@ const MobileRules: React.FC = () => {
           <IconClose />
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

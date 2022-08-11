@@ -12,10 +12,10 @@ const DesktopRules = () => {
   };
 
   return (
-    <div className="desktop-rules relative" data-testid="desktop-rules">
+    <div className="desktop-rules relative h-full" data-testid="desktop-rules">
       <div
         onClick={handleCloseRules}
-        className="bg-black opacity-50 h-screen flex justify-center items-center"
+        className="bg-black opacity-50 flex h-full justify-center items-center"
       ></div>
 
       <AnimatePresence>
@@ -31,6 +31,7 @@ const DesktopRules = () => {
 
               <motion.div
                 className="close-icon cursor-pointer"
+                data-testid="close-desktop-rules"
                 whileHover={{ scale: 1.2 }}
                 onClick={handleCloseRules}
               >

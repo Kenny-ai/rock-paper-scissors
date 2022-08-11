@@ -1,13 +1,12 @@
-import { render, screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
+import { render, screen } from "./test-utils";
+import "@testing-library/jest-dom";
+
 import React from "react";
 import Body from "../components/Body";
-import { useStateContext } from "../Context/StateProvider";
 
 test("on", () => {
-  // const { elements } = useStateContext();
-
   render(<Body />);
-  userEvent.click(screen.getByTestId("paper"));
-  // expect(elements[0].id).toEqual(2);
+  expect(screen.getByTestId("rock")).toBeInTheDocument();
+  expect(screen.getByTestId("paper")).toBeInTheDocument();
+  expect(screen.getByTestId("scissors")).toBeInTheDocument();
 });

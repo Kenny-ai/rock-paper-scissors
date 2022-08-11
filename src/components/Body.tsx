@@ -18,7 +18,7 @@ const Body = () => {
 
   return (
     <div className="body">
-      <div className="flex justify-center items-center py-12 w-full md:mb-4">
+      <section className="flex justify-center items-center py-12 w-full md:mb-4">
         <motion.div
           initial={{ opacity: 0, scale: 0.4 }}
           animate={{
@@ -36,7 +36,8 @@ const Body = () => {
         >
           <Triangle />
 
-          <div
+          <motion.div
+            whileHover={{ scale: 1.1 }}
             className="absolute top-0 left-0"
             onClick={() => {
               setElements(
@@ -46,9 +47,10 @@ const Body = () => {
             }}
           >
             <Paper />
-          </div>
+          </motion.div>
 
-          <div
+          <motion.div
+            whileHover={{ scale: 1.1 }}
             className="absolute top-0 right-0"
             onClick={() => {
               setElements(
@@ -58,10 +60,11 @@ const Body = () => {
             }}
           >
             <Scissors />
-          </div>
+          </motion.div>
 
-          <div className="w-full flex justify-center absolute bottom-0">
-            <div
+          <motion.div className="w-full flex justify-center absolute bottom-0">
+            <motion.div
+              whileHover={{ scale: 1.1 }}
               onClick={() => {
                 setElements(
                   elementsArray.filter((element) => element.id === Id.ROCK)
@@ -70,21 +73,10 @@ const Body = () => {
               }}
             >
               <Rock />
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </motion.div>
-      </div>
-
-      {/* <div className="button flex justify-center lg:justify-end md:px-12">
-        <button
-          className={styles.buttonStyles}
-          onClick={() => {
-            setShowRules(true);
-          }}
-        >
-          Rules
-        </button>
-      </div> */}
+      </section>
     </div>
   );
 };
