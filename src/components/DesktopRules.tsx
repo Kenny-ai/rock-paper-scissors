@@ -12,7 +12,7 @@ const DesktopRules = () => {
   };
 
   return (
-    <div className="desktop-rules relative">
+    <div className="desktop-rules relative" data-testid="desktop-rules">
       <div
         onClick={handleCloseRules}
         className="bg-black opacity-50 h-screen flex justify-center items-center"
