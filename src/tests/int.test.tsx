@@ -8,4 +8,7 @@ test("rules component should popup when user clicks rules button", () => {
   render(<App />);
   userEvent.click(screen.getByRole("button", { name: /rules/i }));
   expect(screen.getByTestId("mobile-rules")).toBeInTheDocument();
+
+  userEvent.click(screen.getByTestId("close-desktop-rules"));
+  expect(screen.queryByTestId("mobile-rules")).not.toBeInTheDocument();
 });

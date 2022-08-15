@@ -153,6 +153,7 @@ const Game = () => {
 
         <div className="desktop-win-message flex-col justify-center items-center p-4 hidden lg:flex">
           <motion.p
+            data-testid="result"
             initial={{ opacity: 0, y: "-100%" }}
             animate={{ opacity: [0, 0, 0, 0, 1], y: 0 }}
             transition={{
