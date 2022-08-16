@@ -1,17 +1,10 @@
 /* eslint-disable no-loop-func */
-describe("My First Test", () => {
-  it("succesfully loads", () => {
+describe("Gameplay", () => {
+  it("displays scores and results correctly after every play", () => {
     // it successfully loads
     cy.visit("/");
 
-    // rules modal comes up when rules button is clicked
-    cy.findByRole("button", { name: /rules/i }).click();
-    cy.findByTestId("desktop-rules").should("be.visible");
-
-    // rules modal isn't visible when closed
-    cy.findByTestId("close-desktop-rules").click({ force: true });
-    cy.findByTestId("desktop-rules").should("not.exist");
-
+    // function to check winner
     const checkWin = (array: number[]) => {
       let arr = array.sort();
       if (arr[0] === arr[1]) {
@@ -32,7 +25,9 @@ describe("My First Test", () => {
     let oldScores: { user: number; cpu: number },
       newScores: { user: number; cpu: number };
 
+    // play 3 rounds to mimick gameplay
     for (let j = 1; j <= 3; j++) {
+      // get scores before each round begins
       cy.findByTestId("user-score").then((score) => {
         oldScores = { ...oldScores, user: parseInt(score.text()) };
       });
@@ -49,8 +44,10 @@ describe("My First Test", () => {
         let iconName = pick.children().data()["testid"];
         let computerId = obj[iconName];
 
+        // get winner
         const winner = checkWin([j, computerId]);
 
+        // show appropriate results and scores after each round
         if (winner === computerId) {
           newScores = {
             ...oldScores,
@@ -69,7 +66,7 @@ describe("My First Test", () => {
 
       cy.findByRole("button", { name: /play again/i }).click();
     }
-
+    // scores should be zero after clicking rest button
     cy.findByRole("button", { name: /reset/i }).click();
     cy.findByTestId("user-score").should("have.text", 0);
     cy.findByTestId("cpu-score").should("have.text", 0);
