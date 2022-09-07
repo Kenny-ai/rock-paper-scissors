@@ -1,14 +1,14 @@
 import "./App.css";
-import Header from "./components/Header";
-import Body from "./components/Body";
-import Game from "./components/Game";
-import Rules from "./components/Rules";
+import Header from "./components/Header/Header";
+import Body from "./screens/Body/Body";
+import Game from "./screens/Game/Game";
+import Rules from "./components/Rules/RulesContainer";
 import { Element } from "./@types/model";
 import Rock from "./components/elements/Rock";
 import Paper from "./components/elements/Paper";
 import Scissors from "./components/elements/Scissors";
-import Button from "./components/Button";
-import { useStateContext } from "./Context/StateProvider";
+import Button from "./components/Button/Button";
+import { useStateContext } from "./contexts/StateProvider";
 
 export const elementsArray: Element[] = [
   {

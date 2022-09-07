@@ -1,4 +1,5 @@
-import { ReactComponent as ScissorsIcon } from "../../svg/icon-scissors.svg";
+import { ReactComponent as ScissorsIcon } from "../../assets/icon-scissors.svg";
+import "./styles.css";
 
 const Scissors = () => {
   return (

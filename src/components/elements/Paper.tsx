@@ -1,4 +1,6 @@
-import { ReactComponent as PaperIcon } from "../../svg/icon-paper.svg";
+import { ReactComponent as PaperIcon } from "../../assets/icon-paper.svg";
+import "./styles.css";
+
 
 const Paper = () => {
   return (

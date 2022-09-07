@@ -1,5 +1,5 @@
-import { ReactComponent as RockIcon } from "../../svg/icon-rock.svg";
-import "../../styles/Body.css";
+import { ReactComponent as RockIcon } from "../../assets/icon-rock.svg";
+import "./styles.css";
 
 const Rock = () => {
   return (
