@@ -6,7 +6,7 @@ describe("Gameplay", () => {
 
     // function to check winner
     const checkWin = (array: number[]) => {
-      let arr = array.sort();
+      const arr = array.sort();
       if (arr[0] === arr[1]) {
         return 0;
       }
@@ -16,7 +16,7 @@ describe("Gameplay", () => {
       return arr[1];
     };
 
-    let obj = {
+    const obj = {
       rock: 1,
       paper: 2,
       scissors: 3,
@@ -41,8 +41,8 @@ describe("Gameplay", () => {
       cy.findByTestId(iconName).click();
 
       cy.get("[data-testid='computer-pick']").then((pick) => {
-        let iconName = pick.children().data()["testid"];
-        let computerId = obj[iconName];
+        const iconName = pick.children().data()["testid"];
+        const computerId = obj[iconName];
 
         // get winner
         const winner = checkWin([j, computerId]);
