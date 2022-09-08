@@ -4,5 +4,22 @@ on:
 jobs:
   verify-code-integrity-and-run-tests:
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x, 14.x, 16.x]
+
     steps:
-      - uses: actions/checkout/v3
+      - uses: actions/checkout/@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{matrix.node-version}}
+          cache: npm
+      - name: Install dependencies
+        run: npm i
+      - name: Run Linting Checks
+        run: npm run lint
+      - name: Build Application
+        run: npm build
+      - name: Run Tests
+        run: npm test
