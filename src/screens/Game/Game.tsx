@@ -6,7 +6,7 @@ import "./styles.css";
 
 // checkWin takes both ids and returns the id of the winner
 export const checkWin = (array: number[]) => {
-  let arr = array.sort();
+  const arr = array.sort();
   if (arr[0] === arr[1]) {
     return 0;
   }
