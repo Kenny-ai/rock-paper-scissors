@@ -39,6 +39,7 @@
     "@testing-library/cypress": "^8.0.3",
     "@testing-library/jest-dom": "^5.16.5",
     "chai": "^4.3.6",
-    "cypress": "^10.4.0"
+    "cypress": "^10.4.0",
+    "prettier-eslint": "^15.0.1"
   }
 }
