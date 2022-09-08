@@ -20,6 +20,6 @@ jobs:
       - name: Run Linting Checks
         run: npm run lint
       - name: Build Application
-        run: npm build
+        run: npm run build
       - name: Run Tests
         run: npm test a
