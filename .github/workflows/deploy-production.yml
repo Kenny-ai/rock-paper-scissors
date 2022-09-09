@@ -2,10 +2,7 @@ name: Run Tests, build and deploy to production
 env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-on:
-  push:
-    branches:
-      - master
+on: [pull_request]
 jobs:
   Deploy-Production:
     runs-on: ubuntu-latest
