@@ -2,7 +2,7 @@ name: Linting, Formatting and Unit and Integration Tests
 on:
   push:
 jobs:
-  verify-code-integrity-and-run-tests:
+  verify-code-integrity-and-run-unit-tests:
     runs-on: ubuntu-latest
 
     strategy:
@@ -25,3 +25,25 @@ jobs:
         run: npm run build
       - name: Run Unit and Integration Tests
         run: npm run test a
+
+  build-and-run-e2e-tests:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x]
+
+    steps:
+      - uses: actions/checkout/@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{matrix.node-version}}
+          cache: npm
+      - name: Install dependencies
+        run: npm i
+      - name: Run e2e Tests
+        uses: cypress-io/github-action@v4.x.x
+        with:
+          browser: chrome
+          build: npm run build
+          start: npm start
+          wait-on: 'http://localhost:3000'
