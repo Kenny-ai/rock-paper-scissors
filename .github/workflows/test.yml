@@ -1,28 +1,57 @@
-name: Test
+name: Linting, Formatting and Unit and Integration Tests
 on:
   push:
 jobs:
-  verify-code-integrity-and-run-tests:
+  verify-code-integrity-and-run-unit-tests:
     runs-on: ubuntu-latest
 
-    # strategy:
-    #   matrix:
-    #     node-version: [12.x, 14.x, 16.x]
+    strategy:
+      matrix:
+        node-version: [16.x]
 
     steps:
       - uses: actions/checkout/@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: "16"
-          # ${{matrix.node-version}}
+          node-version: ${{matrix.node-version}}
           cache: npm
       - name: Install dependencies
         run: npm i
+      - name: Run Prettier
+        run: npm run format
       - name: Run Linting Checks
         run: npm run lint
       - name: Build Application
         run: npm run build
-        env: 
-          CI: false
-      - name: Run Tests
+      - name: Run Unit and Integration Tests
         run: npm run test a
+
+  build-and-run-e2e-tests:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x]
+
+    steps:
+      - uses: actions/checkout/@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{matrix.node-version}}
+          cache: npm
+      - name: Install dependencies
+        run: npm i
+        
+      - name: Run e2e Tests
+        uses: cypress-io/github-action@v4.2.0
+        with:
+          browser: chrome
+          build: npm run build
+          start: npm start
+          wait-on: "http://localhost:3000"
+
+      - name: Build artifacts
+        uses: actions/upload-artifact@v1
+        if: always()
+        with:
+          name: cypress-videos
+          path: cypress/videos
