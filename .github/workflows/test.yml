@@ -41,7 +41,7 @@ jobs:
       - name: Install dependencies
         run: npm i
       - name: Run e2e Tests
-        uses: cypress-io/github-action@v4.x.x
+        uses: cypress-io/github-action@v4.2.0
         with:
           browser: chrome
           build: npm run build
