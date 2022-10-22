@@ -18,10 +18,10 @@ const Header = () => {
           <p className="mb-0 uppercase text-xl lg:text-4xl">Scissors</p>
         </div>
 
-        <div className="score bg-sky-100 flex items-center justify-center px-3 py-4 rounded-lg sm:px-6 lg:px-12">
+        <div className="score bg-sky-100 flex items-center justify-center p-4 rounded-lg sm:px-6 lg:px-12">
           <div className="score flex items-center flex-col">
             <p className="text-blue-500 text-xs uppercase sm:text-base">
-              Your score
+              You
             </p>
             <p
               data-testid="user-score"
@@ -35,16 +35,16 @@ const Header = () => {
         <motion.button
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
-          className="py-1 px-5 bg-sky-100 text-blue-500 rounded-lg uppercase cursor-pointer"
+          className="py-2 sm:py-1 px-3 text-xs sm:text-base sm:px-5 bg-sky-100 text-blue-500 rounded-lg uppercase cursor-pointer"
           onClick={handleReset}
         >
           Reset
         </motion.button>
 
-        <div className="score bg-sky-100 flex items-center justify-center px-3 py-4 rounded-lg sm:px-6 lg:px-12">
+        <div className="score bg-sky-100 flex items-center justify-center p-4 rounded-lg sm:px-6 lg:px-12">
           <div className="score flex items-center flex-col">
             <p className="text-blue-500 text-xs uppercase sm:text-base">
-              cpu score
+              cpu
             </p>
             <p
               data-testid="cpu-score"

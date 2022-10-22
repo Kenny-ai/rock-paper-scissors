@@ -45,7 +45,7 @@ function App() {
       </div>
 
       {showRules && (
-        <div className="rules absolute top-0 w-full h-full">
+        <div className="rules absolute top-0 w-full h-screen">
           <Rules />
         </div>
       )}

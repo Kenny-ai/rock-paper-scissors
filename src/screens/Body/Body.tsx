@@ -31,7 +31,7 @@ const Body = () => {
             stiffness: 100,
             restDelta: 0.001,
           }}
-          className="relative flex justify-center items-center p-8 sm:p-12"
+          className="relative flex justify-center items-center p-4 sm:p-12"
         >
           <Triangle />
 
